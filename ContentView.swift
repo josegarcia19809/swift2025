@@ -8,26 +8,44 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var mensaje: String=""
+    @State private var mensaje: String="Saludos"
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text(mensaje)
-            Button{
-                mensaje = helloWorld()
-            }label: {
-                Text("Go")
+        ZStack {
+            Color.peterRiver
+                .ignoresSafeArea()
+            VStack {
+                Image("angela")
+                    .resizable()
+                    .frame(width: 220, height: 220)
+                    .clipShape(Circle())
+                Text(mensaje)
+                    .foregroundStyle(Color.white)
                     .bold()
-                    .frame(width: 150, height: 50)
-                    .background(.blue)
+                    .font(.title)
+                Button{
+                    mensaje = helloWorld()
+                }label: {
+                    Text("Go")
+                        .bold()
+                        .frame(width: 150, height: 50)
+                        .background(.wetAsphalt)
+                        .foregroundColor(.white)
+                        .clipShape(Capsule())
+                }
+                RoundedRectangle(cornerRadius: 15)
+                    .frame(width: 350, height: 50)
                     .foregroundColor(.white)
-                    .clipShape(Capsule())
+                    .overlay(
+                        HStack{
+                            Image(systemName: "phone")
+                            Text("123-456-789")
+                                .font(.title2)
+                        }
+                    )
+                
             }
-            
+            .padding()
         }
-        .padding()
     }
 }
 
