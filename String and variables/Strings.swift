@@ -33,7 +33,7 @@ func multilinea()->String{
 }
 
 func trimString()->String{
-    var cita = "       El trabajo va \n\na ocupar la mayor parte de tu \tvida          "
+    let cita = "       El trabajo va \n\na ocupar la mayor parte de tu \tvida          "
     return cita.trimmingCharacters(in: .whitespacesAndNewlines)
 }
 
@@ -51,8 +51,8 @@ func contieneSubcadena()->String{
     return mensaje + " contiene 'myself': " + String(mensaje.contains("myself"))
 }
 
-func primeraUltimaLetras()->String{
-    let lenguaje = "swift"
+func primeraUltimaLetras(lenguaje: String)->String{
+    //let lenguaje = "swift"
     return lenguaje + ", primera letra: " + String(lenguaje.first!) + ", última letra: "
     + String(lenguaje.last!)
 }
