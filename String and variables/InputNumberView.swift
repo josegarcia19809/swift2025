@@ -23,7 +23,8 @@ struct InputNumberView: View {
                 
             
             Button(action: {
-                output = "The double is \(Int(input)! * 2)"
+                let random = Int.random(in: 1...10)
+                output = "The double is \(Int(input)! * random)"
             }) {
                 Text("Go!")
                     .font(.title3)
