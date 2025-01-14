@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AddTodoView: View {
     @State private var task = ""
+    @ObservedObject var todoList: TodoList
+    @State private var displayText = "What would you like to add?"
     
     var body: some View {
         NavigationView{
@@ -18,11 +20,17 @@ struct AddTodoView: View {
                     .shadow(color: .gray, radius: 2,  x: 0, y: 2)
                     .foregroundStyle(Color.white)
                     .overlay(
-                        TextField("What would you like to add?", text: $task)
+                        TextField(displayText, text: $task)
                             .multilineTextAlignment(.center)
                     )
                 Button{
-                    //
+                    if (task != ""){
+                        todoList.addTodo(task: task)
+                        todoList.showAddTodoView = false
+                    }
+                    else{
+                        displayText = "Enter some text first!"
+                    }
                 }label: {
                     RoundedRectangle(cornerRadius: 25)
                         .frame(width: 300, height: 50)
@@ -44,6 +52,8 @@ struct AddTodoView: View {
     }
 }
 
-#Preview {
-    AddTodoView()
+struct AddTodoView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddTodoView(todoList: TodoList())
+    }
 }
